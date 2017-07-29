@@ -1,0 +1,49 @@
+---
+- name: Install Dependencies [Amazon]
+  yum:
+    name: "{{ item }}"
+  with_items:
+   - perl-Switch
+   - perl-DateTime
+   - perl-Sys-Syslog
+   - perl-LWP-Protocol-https
+  when: ansible_distribution == 'Amazon'
+  become: true
+  become_method: sudo
+
+- name: Install Dependencies [Red Hat Enterprise Linux]
+  yum:
+    name: "{{ item }}"
+  with_items:
+   - perl-Switch
+   - perl-DateTime
+   - perl-Sys-Syslog
+   - perl-LWP-Protocol-https
+   - perl-Digest-SHA
+   - zip
+   - unzip
+  when: ansible_distribution == 'Red Hat Enterprise Linux'
+  become: true
+  become_method: sudo
+
+- name: Install Dependencies [Ubuntu]
+  apt:
+    name: "{{ item }}"
+  with_items:
+   - unzip
+   - libwww-perl
+   - libdatetime-perl
+  when: ansible_distribution == 'Ubuntu'
+  become: true
+  become_method: sudo
+
+- name: Install Dependencies [Suse]
+  zypper:
+    name: "{{ item }}"
+  with_items:
+   - perl-Switch
+   - perl-DateTime
+   - perl(LWP::Protocol::https)
+  when: ansible_distribution == 'SUSE Linux Enterprise Server' or ansible_distribution == 'SUSE'
+  become: true
+  become_method: sudo

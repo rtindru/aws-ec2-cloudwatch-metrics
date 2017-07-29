@@ -1,0 +1,5 @@
+---
+- name: Remove Crontab
+  cron:
+    name: "AWS Cloudwatch Metrics"
+    state: absent

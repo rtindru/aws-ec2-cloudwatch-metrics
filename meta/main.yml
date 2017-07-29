@@ -1,0 +1,25 @@
+galaxy_info:
+  author: Rajtilak Indrajit
+  description: Ansible role for setting up memory and disk metrics on EC2 instances via Cloudwatch
+
+  license: MIT
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: Red Hat Enterprise Linux
+    versions:
+    - all # 6.6
+  - name: Amazon
+    versions:
+    - all # 2014.09.2
+  - name: Ubuntu
+    versions:
+    - all # 16.04, 14.04
+  - name: SUSE Linux Enterprise Server
+    versions:
+    - all # 12
+
+  galaxy_tags: ['aws', 'ec2', 'metrics', 'cloudwatch', 'memory', 'swap', 'disk', ]
+
+dependencies: []

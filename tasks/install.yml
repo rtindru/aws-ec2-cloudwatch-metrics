@@ -1,0 +1,16 @@
+---
+- include: dependencies.yml
+
+- include: download.yml
+
+- name: Test Data Push
+  command: |
+    ./mon-put-instance-data.pl {{ push_metrics }} --aws-access-key-id={{ aws_access_key }} --aws-secret-key={{ aws_secret }} --verify --verbose
+  args:
+    chdir: "{{ ansible_env.HOME }}/aws-scripts-mon/"
+
+- name: Schedule Crontab
+  cron:
+    name: "AWS Cloudwatch Metrics"
+    minute: "{{ push_frequency_mins }}"
+    job: "{{ ansible_env.HOME }}/aws-scripts-mon/mon-put-instance-data.pl {{ push_metrics }} --aws-access-key-id={{ aws_access_key }} --aws-secret-key={{ aws_secret }} --from-cron"

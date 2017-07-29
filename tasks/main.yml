@@ -1,0 +1,8 @@
+---
+# tasks file for rtindru.aws-cloudwatch-metrics
+
+- include: install.yml
+  when: metrics_enabled and not metrics_remove
+
+- include: remove.yml
+  when: metrics_remove

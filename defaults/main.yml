@@ -1,0 +1,12 @@
+---
+# defaults file for rtindru.aws-cloudwatch-metrics
+
+metrics_enabled: true
+metrics_remove: false
+
+# Full set of options here: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/mon-scripts.html#mon-scripts-systems
+push_metrics: "--mem-util --swap-util --disk-space-util --disk-path=/"
+push_frequency_mins: "*/2"
+
+aws_access_key: ""                                                  # AWS access key ID
+aws_secret: ""                                                      # AWS secret
